@@ -154,6 +154,7 @@ public class Employee {
 	}
 
 // 下記は今回のプログラムを作る上で必須ではない
+// システムの設計者が、デバックとかをするときに使っていたのかも？
 //	@Override
 //	public String toString() {
 //		StringBuffer sb = new StringBuffer();
