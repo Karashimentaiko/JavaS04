@@ -1,8 +1,9 @@
 package beans;
 
-import javax.xml.bind.annotation.XmlRootElement;
+// 下記の2行は今回のプログラムを作る上で必須ではない
+//import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
+//@XmlRootElement
 public class Employee {
 	/**
 	 * データベースの文字数制限
@@ -152,40 +153,41 @@ public class Employee {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		StringBuffer sb = new StringBuffer();
-        sb.append(this.getId());
-        sb.append(",");
-        sb.append(this.getEmpId());
-        sb.append(",");
-        sb.append(this.getName());
-        sb.append(",");
-        sb.append(this.getAge());
-        sb.append(",");
-        sb.append(this.getGender());
-        sb.append(",");
-        sb.append(this.getPhotoId());
-        sb.append(",");
-        String s = this.getZip();
-        sb.append(s != null ? s : "");
-        sb.append(",");
-        s = this.getPref();
-        sb.append(s != null ? s : "");
-        sb.append(",");
-        s = this.getAddress();
-        sb.append(s != null ? s : "");
-        sb.append(",");
-        sb.append(this.getPost().getId());
-        sb.append(",");
-        String date = this.getEnterDate();
-        sb.append(date != null ? date : "");
-        sb.append(",");
-        date = this.getRetireDate();
-        sb.append(date != null ? date : "");
-        // バッファに書き出します
-		return sb.toString();
-	}
+// 下記は今回のプログラムを作る上で必須ではない
+//	@Override
+//	public String toString() {
+//		StringBuffer sb = new StringBuffer();
+//        sb.append(this.getId());
+//        sb.append(",");
+//        sb.append(this.getEmpId());
+//        sb.append(",");
+//        sb.append(this.getName());
+//        sb.append(",");
+//        sb.append(this.getAge());
+//        sb.append(",");
+//        sb.append(this.getGender());
+//        sb.append(",");
+//        sb.append(this.getPhotoId());
+//        sb.append(",");
+//        String s = this.getZip();
+//        sb.append(s != null ? s : "");
+//        sb.append(",");
+//        s = this.getPref();
+//        sb.append(s != null ? s : "");
+//        sb.append(",");
+//        s = this.getAddress();
+//        sb.append(s != null ? s : "");
+//        sb.append(",");
+//        sb.append(this.getPost().getId());
+//        sb.append(",");
+//        String date = this.getEnterDate();
+//        sb.append(date != null ? date : "");
+//        sb.append(",");
+//        date = this.getRetireDate();
+//        sb.append(date != null ? date : "");
+//        // バッファに書き出します
+//		return sb.toString();
+//	}
 
 
 }
