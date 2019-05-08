@@ -2,7 +2,7 @@
 
 var rootUrl = "/java_s04/api/v1.1/expenses";
 
-initPage();
+findAll();
 
 $('#saveExpenses').click(function() {
 	$('.error').children().remove();
@@ -40,15 +40,17 @@ $('#newExpenses').click(function() {
 	renderDetails({});
 });
 
-function initPage() {
-	var newOption = $('<option>').val(0).text('指定しない').prop('selected', true);
-	$('#postIdParam').append(newOption);
-	makePostSelection('#postIdParam');
-	findAll();
-	makePostSelection('#postId');
+function findAll(){
+	console.log('findAll start.')
+	$.ajax({
+		type: "GET",
+		url: rootUrl,
+		dataType: "json",
+		success: renderTable
+	});
 }
 
-function findByParam() {
+/*function findByParam() {
 	console.log('findByParam start.');
 
 	var urlWithParam = rootUrl + '?postId=' + $('#postIdParam').val()
@@ -107,6 +109,7 @@ function updateExpenses(id) {
 		}
 	})
 }
+*/
 
 function renderTable(data) {
 	var headerRow = '<tr><th>申請ID</th><th>申請日</th><th>更新日</th><th>申請者</th><th>タイトル</th><th>金額</th><th>ステータス</th>';
@@ -156,20 +159,10 @@ function renderDetails(expenses) {
 	$('#rejectReason').val(expenses.rejectReason);
 }
 
-function makePostSelection(selectionId, expenses) {
-	console.log('makePostSelection start.')
-	$.ajax({
-		type : "GET",
-		url : getPostsUrl,
-		dataType : "json",
-		success : function(data, textStatus, jqXHR) {
-			$.each(data, function(index, post) {
-				var newOption = $('<option>').val(post.id).text(post.name);
-				if (expenses != null && expenses.post.id == post.id) {
-					newOption.prop('selected', isSelected);
-				}
-				$(selectionId).append(newOption);
-			});
-		}
+function formToJSON() {
+	var appId = $('#appId').val();
+	return JSON.stringify({
+		"id": (appId == "" ? 0 : appId),
+		"name": $('#name').val()
 	});
 }

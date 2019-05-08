@@ -1,5 +1,7 @@
 package java_s04;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -23,6 +25,16 @@ import dao.ExpensesDAO;
 @Path("expenses")
 public class ExpensesResource {
 	private final ExpensesDAO expDao = new ExpensesDAO();
+
+	/**
+	 * 一覧用に部署情報を全件取得する。
+	 * @return 部署情報のリストをJSON形式で返す。
+	 */
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Expenses> findAll() {
+		return expDao.findAll();
+	}
 
 	/**
 	 * ID指定で経費情報を取得する。

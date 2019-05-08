@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja"> <!--langとは何か？-->
+<html lang="ja">
 	<head>
 		<meta charset="UTF-8">
 		<title>経費管理ページ</title>
@@ -9,7 +9,7 @@
 		<div class="main clearfix">
 			<div id="expenseslist">
 				<p>経費一覧:</p>
-				<div id="posts"></div>
+				<div id="expenses"></div>
 				<div id="insertBlock">
 					<button type="button" id="newExpenses">経費追加</button>
 				</div>
@@ -52,9 +52,9 @@
 				</div>
 				<div>
 					ステータス:
-					<label><input type="radio" name="status" value="APPLYING" disabled>申請中</label>
-					<label><input type="radio" name="status" value="REJECT" disabled>却下</label>
-					<label><input type="radio" name="status" value="ACCEPTED" disabled>承認済</label>
+					<label><input type="radio" name="exstatus" value="APPLYING">申請中</label>
+					<label><input type="radio" name="exstatus" value="REJECT">却下</label>
+					<label><input type="radio" name="exstatus" value="ACCEPTED">承認済</label>
 				</div>
 				<div>
 					<label for="upName">更新者:</label>
@@ -77,8 +77,8 @@
 		</div>
 	</div>
 
-	<!-- <script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/employee.js"></script> -->
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/expenses.js"></script>
 
 </body>
 </html>
