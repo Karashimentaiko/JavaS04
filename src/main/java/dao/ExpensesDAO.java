@@ -178,7 +178,7 @@ public class ExpensesDAO {
 		result.setTitle(rs.getString("TITLE"));
 		result.setPayee(rs.getString("PAYEE"));
 		result.setPrice(rs.getInt("PRICE"));
-		result.setStatusByInt(rs.getInt("STATUS"));
+		result.setExstatusByInt(rs.getInt("STATUS"));
 		result.setUpName(rs.getString("UPNAME"));
 		result.setRejectReason(rs.getString("REJECTREASON"));
 		return result;
@@ -209,7 +209,7 @@ public class ExpensesDAO {
 		statement.setString(count++, expenses.getTitle());
 		statement.setString(count++, expenses.getPayee());
 		statement.setInt(count++, expenses.getPrice());
-		statement.setInt(count++, expenses.getStatus().ordinal());
+		statement.setInt(count++, expenses.getExstatus().ordinal());
 		statement.setString(count++, expenses.getUpName());
 		statement.setString(count++, expenses.getRejectReason());
 

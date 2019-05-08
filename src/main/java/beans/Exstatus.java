@@ -1,6 +1,6 @@
 package beans;
 
-public enum Status {
+public enum Exstatus {
 	APPLYING,
 	REJECT,
 	ACCEPTED

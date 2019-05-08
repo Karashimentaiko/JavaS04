@@ -22,7 +22,7 @@ public class Expenses {
 	private String title;
 	private String payee;
 	private int price;
-	private Status status;
+	private Exstatus exstatus;
 	private String upName;
 	private String rejectReason;
 
@@ -90,21 +90,21 @@ public class Expenses {
 		this.price = price;
 	}
 
-	public Status getStatus() {
-		return status;
+	public Exstatus getExstatus() {
+		return exstatus;
 	}
 
-	public void setStatus(Status status) {
-		this.status = status;
+	public void setExstatus(Exstatus exstatus) {
+		this.exstatus = exstatus;
 	}
 
-	public void setStatusByInt(int statusAsInt) {
-		if (statusAsInt == 0) {
-			this.status = Status.APPLYING;
-		} else if (statusAsInt == 1) {
-			this.status = Status.REJECT;
-		} else if (statusAsInt == 2) {
-			this.status = Status.ACCEPTED;
+	public void setExstatusByInt(int exstatusAsInt) {
+		if (exstatusAsInt == 0) {
+			this.exstatus = Exstatus.APPLYING;
+		} else if (exstatusAsInt == 1) {
+			this.exstatus = Exstatus.REJECT;
+		} else if (exstatusAsInt == 2) {
+			this.exstatus = Exstatus.ACCEPTED;
 		}
 	}
 
@@ -147,7 +147,7 @@ public class Expenses {
 			System.err.println("Expenses: Bad payee length.");
 			return false;
 		}
-		if ((status != Status.APPLYING) && (status != Status.REJECT) && (status != Status.ACCEPTED)) {
+		if ((exstatus != Exstatus.APPLYING) && (exstatus != Exstatus.REJECT) && (exstatus != Exstatus.ACCEPTED)) {
 			System.err.println("Expenses: Bad status.");
 			return false;
 		}

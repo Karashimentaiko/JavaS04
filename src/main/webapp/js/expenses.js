@@ -122,17 +122,17 @@ function renderTable(data) {
 		$.each(data, function(index, expenses) {
 			var row = $('<tr>');
 			row.append($('<td>').text(expenses.appId));
-			row.append($('<td>').text(expenses.repDate);
-			row.append($('<td>').text(expenses.upDate);
+			row.append($('<td>').text(expenses.repDate));
+			row.append($('<td>').text(expenses.upDate));
 			row.append($('<td>').text(expenses.name));
 			row.append($('<td>').text(expenses.title));
 			row.append($('<td>').text(expenses.price));
-			row.append($('<td>').text(expenses.status);
+			row.append($('<td>').text(expenses.status));
 			row.append($('<td>').append(
 					$('<button>').text("編集").attr("type","button").attr("onclick", "findById("+expenses.id+')')
 				));
 			row.append($('<td>').append(
-					$('<button>').text("詳細").attr("type","button").attr("onclick", "findById("+expenses.id+')')
+					$('<button>').text("削除").attr("type","button").attr("onclick", "deleteById("+expenses.id+')')
 				));
 			table.append(row);
 		});

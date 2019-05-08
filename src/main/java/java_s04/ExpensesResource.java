@@ -10,12 +10,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import org.glassfish.jersey.media.multipart.FormDataMultiPart;
 
 import beans.Expenses;
-//import beans.Status;
+import beans.Exstatus;
 import dao.ExpensesDAO;
 
 /**
@@ -62,8 +61,8 @@ public class ExpensesResource {
 		expenses.setTitle(form.getField("title").getValue());
 		expenses.setPayee(form.getField("payee").getValue());
 		expenses.setPrice(Integer.parseInt(form.getField("price").getValue()));
-		String status = form.getField("status").getValue();
-		expenses.setStatus(Status.valueOf(status));
+		String exstatus = form.getField("exstatus").getValue();
+		expenses.setExstatus(Exstatus.valueOf(exstatus));
 
 		if (!expenses.isValidObject()) {
 			throw new WebApplicationException(Response.Status.BAD_REQUEST);
@@ -95,8 +94,8 @@ public class ExpensesResource {
 		expenses.setTitle(form.getField("title").getValue());
 		expenses.setPayee(form.getField("payee").getValue());
 		expenses.setPrice(Integer.parseInt(form.getField("price").getValue()));
-		String status = form.getField("status").getValue();
-		expenses.setStatus(Status.valueOf(status));
+		String exstatus = form.getField("exstatus").getValue();
+		expenses.setExstatus(Exstatus.valueOf(exstatus));
 
 		if (!expenses.isValidObject()) {
 			throw new WebApplicationException(Response.Status.BAD_REQUEST);
