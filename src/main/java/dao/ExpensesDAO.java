@@ -165,10 +165,10 @@ public class ExpensesDAO {
 		 * @return 検索結果を収めたオブジェクト
 		 * @throws SQLException 検索結果取得中に何らかの問題が発生した場合に送出される。
 		 */
-		private Employee processRow(ResultSet rs) throws SQLException {
-			Employee result = new Employee();
+		private Expenses processRow(ResultSet rs) throws SQLException {
+			Expenses result = new Expenses();
 
-			// Employee本体の再現
+			// Expenses本体の再現
 			result.setId(rs.getInt("ID"));
 			result.setEmpId(rs.getString("EMPID"));
 			result.setName(rs.getString("NAME"));
