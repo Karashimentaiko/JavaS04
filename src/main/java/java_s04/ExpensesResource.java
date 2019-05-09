@@ -126,5 +126,6 @@ public class ExpensesResource {
 	@Path("{id}")
 	public void remove(@PathParam("id") int id) {
 		expDao.remove(id);
+//		return "OK";
 	}
 }

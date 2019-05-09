@@ -131,13 +131,16 @@ function deleteById(id) {
 		url: rootUrl+'/'+id,
 		success: function() {
 			findAll();
+			$('#id').val('');
 			$('#appId').val('');
 			$('#repDate').val('');
 			$('#upDate').val('');
 			$('#name').val('');
 			$('#title').val('');
+			$('#payee').val('');
 			$('#price').val('');
-			$('#exstatus').val('');
+			$('input[name="exstatus"]').val([ '' ]);
+			$('#upName').val('');
 		}
 	});
 }
