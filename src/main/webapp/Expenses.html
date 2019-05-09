@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>経費管理ページ</title>
+		<link rel="stylesheet" href="css/expensesStyle.css">
+	</head>
+	<body>
+		<div class="main clearfix">
+			<div id="expenseslist">
+				<p>経費一覧:</p>
+				<div id="expenses"></div>
+				<div id="insertBlock">
+					<button type="button" id="newExpenses">経費追加</button>
+				</div>
+			</div>
+			<div id="detail">
+				<p>経費詳細データ：</p>
+    			<form id="expensesForm" enctype="multipart/form-data">
+				<div class="error"></div>
+				<div>
+					<label for="id">ID:</label>
+					<input type="text" name="id" id="id" disabled>
+				</div>
+				<div>
+					<label for="appId">申請ID:</label>
+					<input type="text" maxlength="100" name="appId" id="appId">
+				</div>
+				<div>
+					<label for="repDate">申請日:</label>
+					<input type="text" name="repDate" id="repDate" placeholder="例：2019-04-01">
+				</div>
+				<div>
+					<label for="upDate">更新日:</label>
+					<input type="text" name="upDate" id="upDate" placeholder="例：2019-04-01">
+				</div>
+				<div>
+					<label for="name">申請者:</label>
+					<input type="text" maxlength="40" name="name" id="name">
+				</div>
+				<div>
+					<label for="title">タイトル:</label>
+					<input type="text" style = "width:40%; box-sizing:border-box" maxlength="100" name="title" id="title">
+				</div>
+				<div>
+					<label for="payee">支払先:</label>
+					<input type="text" style = "width:40%; box-sizing:border-box" maxlength="100" name="payee" id="payee">
+				</div>
+				<div>
+					<label for="price">金額:</label>
+					<input type="text" name="price" id="price">
+				</div>
+				<div>
+					ステータス:
+					<label><input type="radio" name="exstatus" value="APPLYING">申請中</label>
+					<label><input type="radio" name="exstatus" value="REJECT">却下</label>
+					<label><input type="radio" name="exstatus" value="ACCEPTED">承認済</label>
+				</div>
+				<div>
+					<label for="upName">更新者:</label>
+					<input type="text" maxlength="40" name="upName" id="upName">
+				</div>
+				<div>
+					<button id="saveExpenses">保存</button>
+					<button id="return">戻る</button>
+            	</div>
+				<!--<div>
+					<button id="accept">承認</button>
+            	</div>
+            	<div>
+					<button id="reject">却下</button>
+            	</div>
+				<div>
+					<label for="rejectReason">却下理由:</label>
+					<input type="text" maxlength="100" name="rejectReason" id="rejectReason">
+				</div> -->
+			</form>
+		</div>
+	</div>
+
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/expenses.js"></script>
+
+</body>
+</html>
