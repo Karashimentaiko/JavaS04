@@ -1,5 +1,7 @@
 package java_s04;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -61,15 +63,15 @@ public class ExpensesResource {
 	 *             入力データチェックに失敗した場合に送出される。
 	 */
 	@POST
-	@Consumes(MediaType.MULTIPART_FORM_DATA)
-	@Produces(MediaType.APPLICATION_JSON)
 	public Expenses create(final FormDataMultiPart form) throws WebApplicationException {
 		Expenses expenses = new Expenses();
 
 		expenses.setId(0);
 		expenses.setAppId(form.getField("appId").getValue());
+		Date repDate = new Date(System.currentTimeMillis());
+		SimpleDateFormat formatdate = new SimpleDateFormat("yyyy-MM-dd");
 		expenses.setRepDate(form.getField("repDate").getValue());
-		expenses.setUpDate(form.getField("upDate").getValue());
+		expenses.setUpDate(formatdate.format(repDate));
 		expenses.setName(form.getField("name").getValue());
 		expenses.setTitle(form.getField("title").getValue());
 		expenses.setPayee(form.getField("payee").getValue());

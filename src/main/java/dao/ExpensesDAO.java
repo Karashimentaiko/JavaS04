@@ -262,7 +262,6 @@ public class ExpensesDAO {
 		statement.setInt(count++, expenses.getPrice());
 		statement.setInt(count++, expenses.getExstatus().ordinal());
 		statement.setString(count++, expenses.getUpName());
-		//statement.setString(count++, expenses.getRejectReason());
 
 		if (forUpdate) {
 			statement.setInt(count++, expenses.getId());
