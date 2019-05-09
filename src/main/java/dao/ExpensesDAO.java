@@ -21,12 +21,15 @@ public class ExpensesDAO {
 	private static final String SELECT_ALL_QUERY = " SELECT EXP.ID AS ID, EXP.APPID, EXP.REPDATE, EXP.UPDATEDATE, EXP.NAME, EXP.TITLE, EXP.PAYEE, "
 			+ "EXP.PRICE, EXP.STATUS, EXP.UPNAME FROM EXPENSES EXP ORDER BY EXP.ID";
 
-	// 上記は却下理由は入っていない
-	private static final String SELECT_BY_ID_QUERY = SELECT_ALL_QUERY + " WHERE EMP.APPID = ?";
+	private static final String SELECT_BY_ID_QUERY = " SELECT EXP.ID AS ID, EXP.APPID, EXP.REPDATE, EXP.UPDATEDATE, EXP.NAME, EXP.TITLE, EXP.PAYEE, "
+			+ "EXP.PRICE, EXP.STATUS, EXP.UPNAME FROM EXPENSES EXP " + " WHERE ID = ?";
+
 	private static final String INSERT_QUERY = "INSERT INTO "
 			+ "EXPENSES(APPID, REPDATE, UPDATEDATE, NAME, TITLE, PAYEE, PRICE, UPNAME) " + "VALUES(?,?,?,?,?,?,?,?)";
 	private static final String UPDATE_QUERY = "UPDATE EXPENSES "
 			+ "SET APPID=?,REPDATE=?,UPDATEDATE=?,NAME=?,TITLE=?,PAYEE=?,PRICE=?,UPNAME=?" + "WHERE ID = ?";
+
+	private static final String DELETE_QUERY = "DELETE FROM EXPENSES WHERE ID = ?";
 
 	/**
 	 * 経費の全件を取得する。
@@ -61,7 +64,7 @@ public class ExpensesDAO {
 	 *
 	 * @param id
 	 *            検索対象のID
-	 * @return 検索できた場合は検索結果データを収めたPostインスタンス。検索に失敗した場合はnullが返る。
+	 * @return 検索できた場合は検索結果データを収めたExpensesインスタンス。検索に失敗した場合はnullが返る。
 	 */
 	public Expenses findById(int id) {
 		Expenses result = null;
@@ -177,6 +180,31 @@ public class ExpensesDAO {
 		}
 
 		return expenses;
+	}
+
+	/**
+	 * 指定されたIDのExpensesデータを削除する。
+	 *
+	 * @param id 削除対象のExpensesデータのID
+	 * @return 削除が成功したらtrue、失敗したらfalse
+	 */
+	public boolean remove(int id) {
+		Connection connection = ConnectionProvider.getConnection();
+		if (connection == null) {
+			return false;
+		}
+
+		int count = 0;
+		try (PreparedStatement statement = connection.prepareStatement(DELETE_QUERY)) {
+			// DELETE実行
+			statement.setInt(1, id);
+			count = statement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionProvider.close(connection);
+		}
+		return count == 1;
 	}
 
 	/**

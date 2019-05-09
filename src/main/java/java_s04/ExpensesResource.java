@@ -3,6 +3,7 @@ package java_s04;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -114,5 +115,16 @@ public class ExpensesResource {
 		}
 
 		return expDao.update(expenses);
+	}
+
+	/**
+	 * 指定したIDの経費情報を削除する。
+	 *
+	 * @param id 削除対象の経費情報のID
+	 */
+	@DELETE
+	@Path("{id}")
+	public void remove(@PathParam("id") int id) {
+		expDao.remove(id);
 	}
 }

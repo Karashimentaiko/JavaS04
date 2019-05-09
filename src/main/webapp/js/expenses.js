@@ -50,6 +50,19 @@ function findAll(){
 	});
 }
 
+function findById(id) {
+	console.log('findByID start - id:' + id);
+	$.ajax({
+		type : "GET",
+		url : rootUrl + '/' + id,
+		dataType : "json",
+		success : function(data) {
+			console.log('findById success: ' + data.name);
+			renderDetails(data)
+		}
+	});
+}
+
 /*function findByParam() {
 	console.log('findByParam start.');
 
@@ -111,6 +124,24 @@ function updateExpenses(id) {
 }
 */
 
+function deleteById(id) {
+	console.log('delete start - id:'+id);
+	$.ajax({
+		type: "DELETE",
+		url: rootUrl+'/'+id,
+		success: function() {
+			findAll();
+			$('#appId').val('');
+			$('#repDate').val('');
+			$('#upDate').val('');
+			$('#name').val('');
+			$('#title').val('');
+			$('#price').val('');
+			$('#exstatus').val('');
+		}
+	});
+}
+
 function renderTable(data) {
 	var headerRow = '<tr><th>申請ID</th><th>申請日</th><th>更新日</th><th>申請者</th><th>タイトル</th><th>金額</th><th>ステータス</th>';
 
@@ -130,7 +161,7 @@ function renderTable(data) {
 			row.append($('<td>').text(expenses.name));
 			row.append($('<td>').text(expenses.title));
 			row.append($('<td>').text(expenses.price));
-			row.append($('<td>').text(expenses.status));
+			row.append($('<td>').text(expenses.exstatus));
 			row.append($('<td>').append(
 					$('<button>').text("編集").attr("type","button").attr("onclick", "findById("+expenses.id+')')
 				));
@@ -154,9 +185,8 @@ function renderDetails(expenses) {
 	$('#title').val(expenses.title);
 	$('#payee').val(expenses.payee);
 	$('#price').val(expenses.price);
-	$('input[name="status"]').val([ expenses.status ]);
+	$('input[name="exstatus"]').val([ expenses.exstatus ]);
 	$('#upName').val(expenses.upName);
-	$('#rejectReason').val(expenses.rejectReason);
 }
 
 function formToJSON() {
