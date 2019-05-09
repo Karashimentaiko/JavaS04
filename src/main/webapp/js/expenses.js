@@ -50,6 +50,7 @@ function findAll(){
 	});
 }
 
+/*選択*/
 function findById(id) {
 	console.log('findByID start - id:' + id);
 	$.ajax({
@@ -124,6 +125,7 @@ function updateExpenses(id) {
 }
 */
 
+/*削除*/
 function deleteById(id) {
 	console.log('delete start - id:'+id);
 	$.ajax({
